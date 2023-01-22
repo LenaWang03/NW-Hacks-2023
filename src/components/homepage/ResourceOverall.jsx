@@ -7,8 +7,6 @@ import lone from "../../assets/line-one.png";
 import ltwo from "../../assets/ltwo.png";
 import lthree from "../../assets/lthree.png";
 
-
-
 function ResourceOverall() {
   return (
     <div className="overall">

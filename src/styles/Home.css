@@ -43,8 +43,11 @@
   font-size: 80px;
   text-align: left;
   color: #000000;
+  margin-bottom: 20px;
+  text-align: start;
   line-height: 1.2em;
   width: 80%;
+
 }
 
 .homepage-summary {
@@ -72,7 +75,7 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  text-align: left;
 }
 
 .logo {

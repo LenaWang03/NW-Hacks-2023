@@ -1,8 +1,6 @@
 import '../../styles/About.css';
 import Features from './about/Features';
 import Miu from './about/Miu';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
 
 function About() {
   return (

@@ -37,13 +37,13 @@ function Timer({ expiryTimestamp, isMeditating, setMeditating }) {
       </div>
       <br/>
       <br/>
-      <button className={`${isMeditating ? "hidden" : ""} btn`} onClick={() => {
+      <button className={`${isMeditating ? "hidden" : ""} link-btn`} onClick={() => {
         audio.loop = true;
         audio.play()
         resume();
         setMeditating(true);
       }}>Start</button>
-      <button className={`${!isMeditating ? "hidden" : ""} btn`} onClick={() => {
+      <button className={`${!isMeditating ? "hidden" : ""} link-btn`} onClick={() => {
         // Restarts to 5 minutes timer
         window.location.reload(); // used this because audio won't pause
         // if (audio != null) {

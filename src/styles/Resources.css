@@ -57,3 +57,8 @@
   color: linear-gradient(125.35deg, #bed0ff 24.24%, #c2efba 59.9%);
   margin-right: auto;
 }
+
+.resource-arrow {
+  width: 25px;
+  height: 25px;
+}

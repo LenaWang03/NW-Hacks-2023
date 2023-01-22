@@ -1,7 +1,7 @@
 import LeftNav from './homepage/LeftNav';
 import Landing from './homepage/Landing';
 import About from './homepage/About';
-import Resources from './homepage/Resources';
+import ResourceOverall from './homepage/ResourceOverall';
 import "../styles/Home.css";
 
 function Home() {
@@ -15,7 +15,7 @@ function Home() {
         <About />
       </section>
       <section className="" id="resources">
-        <Resources />
+        <ResourceOverall />
       </section>
     </div>
   );

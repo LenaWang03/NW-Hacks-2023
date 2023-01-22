@@ -1,3 +1,23 @@
 .hidden {
   display: none;
 }
+
+.link-btn {
+  background-color: #c2efba;
+  color: white;
+  /* -webkit-text-stroke: 0.1px black; */
+  font-size: 1.5em;
+  border-radius: 2em;
+  padding: 0.5em 2em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: transform 0.5s;
+}
+
+.link-btn:hover {
+  transform: translateY(-0.5em);
+  border: none;
+}
+
+.link-btn:active {
+  border: none;
+}

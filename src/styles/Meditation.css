@@ -1,6 +1,5 @@
-.green-bg {
+body {
   background-color: linear-gradient(125.35deg, #c2efba 24.24%, #bed0ff 59.9%);
-  /* color: white; */
 }
 
 .btn {

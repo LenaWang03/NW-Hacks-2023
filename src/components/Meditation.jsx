@@ -10,7 +10,12 @@ export default function Meditation() {
   const [isMeditating, setMeditating] = useState(false);
 
   return (
-    <div>
+    <div >
+      <a href="/" style={{position: 'absolute', left: '5em', top: '5em', alignSelf: 'flex-start'}}>
+        <button className="link-btn">
+          Home
+        </button>
+      </a>
       <img src={isMeditating ? meditatingMiu : standingMiu} alt="Meditating Miu" />
       <Timer expiryTimestamp={time} isMeditating={isMeditating} setMeditating={setMeditating}/>
     </div>

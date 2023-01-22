@@ -2,17 +2,19 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  position: absolute;
+  left: 107px;
+  top: 53px;
 }
 
 .logo-placeholder {
-  left: 107px;
-  top: 53px;
   width: 107px;
   height: 104px;
   border: 1px solid #000000;
 }
 
 .logo-text {
+  position: relative;
   margin-left: 33px;
   font-style: normal;
   font-weight: 600;
@@ -36,4 +38,8 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+}
+
+.homepage-summary {
+  width: 900px;
 }

@@ -1,18 +1,20 @@
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
+  font-style: normal;
   font-weight: 400;
+  font-size: 14px;
+  line-height: 205.02%;
 
   color-scheme: light dark;
-  color: gray;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  color: #000000;
 }
 
 a {

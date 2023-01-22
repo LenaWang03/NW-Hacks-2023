@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../styles/LeftNav.css';
+import '../../styles/LeftNav.css'
 import { Link } from 'react-scroll';
 
 function LeftNav() {

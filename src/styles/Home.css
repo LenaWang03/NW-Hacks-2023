@@ -161,3 +161,11 @@ section {
   animation: animateCloud 45s linear infinite;
   margin-top: 312px;
 }
+
+.center {
+  padding-top: 200px;
+  text-align: center !important;
+  font-weight: 800;
+  font-size: 70px;
+  line-height: 70px;
+}

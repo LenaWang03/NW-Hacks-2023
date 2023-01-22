@@ -1,16 +1,15 @@
 import Link from '../../../assets/Link.svg';
 import '../../../styles/Resources.css';
 
-function Resource() {
+function Resource({resource, text, link}) {
   return (
     <div className="resource">
-      <a type="button" href="https://www.google.com/" target="_blank" className="resource-link">
+      <a type="button" href={link} target="_blank" className="resource-link">
         <img src={Link} />
       </a>
-      <h3 className="resource-header">Resource One</h3>
+      <h3 className="resource-header">{resource}</h3>
       <p className="resource-description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis
-        molestie, dictum est a, mattis
+        {text}
       </p>
     </div>
   );

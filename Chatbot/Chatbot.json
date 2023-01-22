@@ -1,0 +1,1369 @@
+{
+  "description": "A New Flow",
+  "states": [
+    {
+      "name": "Trigger",
+      "type": "trigger",
+      "transitions": [
+        {
+          "next": "Intro",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "incomingCall"
+        },
+        {
+          "event": "incomingConversationMessage"
+        },
+        {
+          "event": "incomingRequest"
+        },
+        {
+          "event": "incomingParent"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    {
+      "name": "Intro",
+      "type": "send-message",
+      "transitions": [
+        {
+          "next": "Question1-ImmediateDanger",
+          "event": "sent"
+        },
+        {
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 10,
+          "y": 180
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "body": "Hi, it's Miu! I'm here to help you connect to the resource! Please answer the following questions with \"yes\" or \"no\" to help us find the right service for you. Type \"Restart\" at any point to start over."
+      }
+    },
+    {
+      "name": "Question1-ImmediateDanger",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "YN1",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "timeout"
+        },
+        {
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 20,
+          "y": 390
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "body": "First question, are you in immediate danger, or at risk of harming yourself or others?",
+        "timeout": "3600"
+      }
+    },
+    {
+      "name": "YN1",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "Question1-ImmediateDanger",
+          "event": "noMatch"
+        },
+        {
+          "next": "Question2",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "No",
+              "arguments": [
+                "{{widgets.Question1-ImmediateDanger.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "No, no, N, NO, n"
+            }
+          ]
+        },
+        {
+          "next": "Call911",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Yes",
+              "arguments": [
+                "{{widgets.Question1-ImmediateDanger.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Yes, yes, y, YES, Y"
+            }
+          ]
+        },
+        {
+          "next": "Intro",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Restart",
+              "arguments": [
+                "{{widgets.Question1-ImmediateDanger.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Restart, RESTART, restart"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.Question1-ImmediateDanger.inbound.Body}}",
+        "offset": {
+          "x": 20,
+          "y": 610
+        }
+      }
+    },
+    {
+      "name": "Call911",
+      "type": "set-variables",
+      "transitions": [
+        {
+          "next": "Redirecting",
+          "event": "next"
+        }
+      ],
+      "properties": {
+        "variables": [
+          {
+            "value": "911",
+            "key": "Number"
+          },
+          {
+            "value": "9 1 1",
+            "key": "Name"
+          }
+        ],
+        "offset": {
+          "x": 30,
+          "y": 820
+        }
+      }
+    },
+    {
+      "name": "Question2",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "YN2",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "timeout"
+        },
+        {
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 450,
+          "y": 790
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "body": "Are you feeling hopeless or at risk of harm?",
+        "timeout": "3600"
+      }
+    },
+    {
+      "name": "YN2",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "Question2",
+          "event": "noMatch"
+        },
+        {
+          "next": "Question3",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "No",
+              "arguments": [
+                "{{widgets.Question2.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "No, no, N, NO, n"
+            }
+          ]
+        },
+        {
+          "next": "BCHealCrisisLine",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Yes",
+              "arguments": [
+                "{{widgets.Question2.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Yes, yes, y, YES, Y"
+            }
+          ]
+        },
+        {
+          "next": "Intro",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Restart",
+              "arguments": [
+                "{{widgets.Question2.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Restart, RESTART, restart"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.Question2.inbound.Body}}",
+        "offset": {
+          "x": 480,
+          "y": 1040
+        }
+      }
+    },
+    {
+      "name": "BCHealCrisisLine",
+      "type": "set-variables",
+      "transitions": [
+        {
+          "next": "Redirecting",
+          "event": "next"
+        }
+      ],
+      "properties": {
+        "variables": [
+          {
+            "value": "+18007842433",
+            "key": "Number"
+          },
+          {
+            "value": "BC Health Crisis Line",
+            "key": "Name"
+          }
+        ],
+        "offset": {
+          "x": 440,
+          "y": 1390
+        }
+      }
+    },
+    {
+      "name": "Question3",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "YN3",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "timeout"
+        },
+        {
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 820,
+          "y": 1390
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "body": "Are you looking to receive on-site help or care?",
+        "timeout": "3600"
+      }
+    },
+    {
+      "name": "YN3",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "Question3",
+          "event": "noMatch"
+        },
+        {
+          "next": "Question4",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "No",
+              "arguments": [
+                "{{widgets.Question3.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "No, no, N, NO, n"
+            }
+          ]
+        },
+        {
+          "next": "AAC",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Yes",
+              "arguments": [
+                "{{widgets.Question3.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Yes, yes, y, YES, Y"
+            }
+          ]
+        },
+        {
+          "next": "Intro",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Restart",
+              "arguments": [
+                "{{widgets.Question3.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Restart, RESTART, restart"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.Question3.inbound.Body}}",
+        "offset": {
+          "x": 60,
+          "y": 1670
+        }
+      }
+    },
+    {
+      "name": "AAC",
+      "type": "set-variables",
+      "transitions": [
+        {
+          "next": "Redirecting",
+          "event": "next"
+        }
+      ],
+      "properties": {
+        "variables": [
+          {
+            "value": "+16046753700",
+            "key": "Number"
+          },
+          {
+            "value": "Vancouver Coastal Health Access and Assessment Centre (AAC)",
+            "key": "Name"
+          }
+        ],
+        "offset": {
+          "x": 70,
+          "y": 1910
+        }
+      }
+    },
+    {
+      "name": "Question4",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "YN4",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "timeout"
+        },
+        {
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 460,
+          "y": 1900
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "body": "Do you identify as Indigenous? If yes, are you looking to receive culturally appropriate services for First Nation, Métis and Inuit people?",
+        "timeout": "3600"
+      }
+    },
+    {
+      "name": "YN4",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "Question4",
+          "event": "noMatch"
+        },
+        {
+          "next": "Question5",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "No",
+              "arguments": [
+                "{{widgets.Question4.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "No, no, N, NO, n"
+            }
+          ]
+        },
+        {
+          "next": "HopeForWellness",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Yes",
+              "arguments": [
+                "{{widgets.Question4.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Yes, yes, y, YES, Y"
+            }
+          ]
+        },
+        {
+          "next": "Intro",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Restart",
+              "arguments": [
+                "{{widgets.Question4.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Restart, RESTART, restart"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.Question4.inbound.Body}}",
+        "offset": {
+          "x": 1190,
+          "y": 2070
+        }
+      }
+    },
+    {
+      "name": "HopeForWellness",
+      "type": "set-variables",
+      "transitions": [
+        {
+          "next": "Redirecting",
+          "event": "next"
+        }
+      ],
+      "properties": {
+        "variables": [
+          {
+            "value": "+18552423310",
+            "key": "Number"
+          },
+          {
+            "value": "Hope For Wellness",
+            "key": "Name"
+          }
+        ],
+        "offset": {
+          "x": 310,
+          "y": 2350
+        }
+      }
+    },
+    {
+      "name": "Question5",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "YN5",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "timeout"
+        },
+        {
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 880,
+          "y": 2340
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "body": "Are you looking for services specific to UBC, SFU or general services? Reply with \"UBC\", \"SFU\" or \"other\"",
+        "timeout": "3600"
+      }
+    },
+    {
+      "name": "YN5",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "Question5",
+          "event": "noMatch"
+        },
+        {
+          "next": "UBCQuestion1",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "UBC",
+              "arguments": [
+                "{{widgets.Question5.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "UBC, ubc, university of british columbia, University of British Columbia"
+            }
+          ]
+        },
+        {
+          "next": "SFUQuestion1",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "SFU",
+              "arguments": [
+                "{{widgets.Question5.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "sfu, SFU, simon fraser university, Simon Fraser University, Simon Fraser"
+            }
+          ]
+        },
+        {
+          "next": "OtherQuestion1",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Other",
+              "arguments": [
+                "{{widgets.Question5.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "other, OTHER, Other"
+            }
+          ]
+        },
+        {
+          "next": "Intro",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Restart",
+              "arguments": [
+                "{{widgets.Question5.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Restart, RESTART, restart"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.Question5.inbound.Body}}",
+        "offset": {
+          "x": 100,
+          "y": 2640
+        }
+      }
+    },
+    {
+      "name": "UBCQuestion1",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "YN6",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "timeout"
+        },
+        {
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -20,
+          "y": 2920
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "body": "Are you looking to book a same-day, single-session counselling appointment with UBC?",
+        "timeout": "3600"
+      }
+    },
+    {
+      "name": "SFUQuestion1",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "YN7",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "timeout"
+        },
+        {
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 590,
+          "y": 2890
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "body": "Are you an international student? If yes, you looking for international student specific services?",
+        "timeout": "3600"
+      }
+    },
+    {
+      "name": "OtherQuestion1",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "YN8",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "timeout"
+        },
+        {
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 1340,
+          "y": 2900
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "body": "Are you aged 18-24?",
+        "timeout": "3600"
+      }
+    },
+    {
+      "name": "YN6",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "UBCQuestion1",
+          "event": "noMatch"
+        },
+        {
+          "next": "UBCSAP",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "No",
+              "arguments": [
+                "{{widgets.UBCQuestion1.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "No, no, N, NO, n"
+            }
+          ]
+        },
+        {
+          "next": "UBCCounselling",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Yes",
+              "arguments": [
+                "{{widgets.UBCQuestion1.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Yes, yes, y, YES, Y"
+            }
+          ]
+        },
+        {
+          "next": "Intro",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Restart",
+              "arguments": [
+                "{{widgets.UBCQuestion1.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Restart, RESTART, restart"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.UBCQuestion1.inbound.Body}}",
+        "offset": {
+          "x": 150,
+          "y": 3150
+        }
+      }
+    },
+    {
+      "name": "YN7",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "SFUQuestion1",
+          "event": "noMatch"
+        },
+        {
+          "next": "SFUQuestion2",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "No",
+              "arguments": [
+                "{{widgets.SFUQuestion1.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "No, no, N, NO, n"
+            }
+          ]
+        },
+        {
+          "next": "SFUInternationalSupport",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Yes",
+              "arguments": [
+                "{{widgets.SFUQuestion1.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Yes, yes, y, YES, Y"
+            }
+          ]
+        },
+        {
+          "next": "Intro",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Restart",
+              "arguments": [
+                "{{widgets.SFUQuestion1.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Restart, RESTART, restart"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.SFUQuestion1.inbound.Body}}",
+        "offset": {
+          "x": 590,
+          "y": 3130
+        }
+      }
+    },
+    {
+      "name": "YN8",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "OtherQuestion1",
+          "event": "noMatch"
+        },
+        {
+          "next": "Here2Talk",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "No",
+              "arguments": [
+                "{{widgets.OtherQuestion1.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "No, no, N, NO, n"
+            }
+          ]
+        },
+        {
+          "next": "OtherQuestion2",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Yes",
+              "arguments": [
+                "{{widgets.OtherQuestion1.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Yes, yes, y, YES, Y"
+            }
+          ]
+        },
+        {
+          "next": "Intro",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Restart",
+              "arguments": [
+                "{{widgets.OtherQuestion1.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Restart, RESTART, restart"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.OtherQuestion1.inbound.Body}}",
+        "offset": {
+          "x": 1360,
+          "y": 3130
+        }
+      }
+    },
+    {
+      "name": "UBCCounselling",
+      "type": "set-variables",
+      "transitions": [
+        {
+          "next": "Redirecting",
+          "event": "next"
+        }
+      ],
+      "properties": {
+        "variables": [
+          {
+            "value": "+16048223811",
+            "key": "Number"
+          },
+          {
+            "value": "UBC Counselling",
+            "key": "Name"
+          }
+        ],
+        "offset": {
+          "x": -170,
+          "y": 3380
+        }
+      }
+    },
+    {
+      "name": "UBCSAP",
+      "type": "set-variables",
+      "transitions": [
+        {
+          "next": "Redirecting",
+          "event": "next"
+        }
+      ],
+      "properties": {
+        "variables": [
+          {
+            "value": "+18335901328",
+            "key": "Number"
+          },
+          {
+            "value": "UBC Student Assistance Program",
+            "key": "Name"
+          }
+        ],
+        "offset": {
+          "x": 180,
+          "y": 3380
+        }
+      }
+    },
+    {
+      "name": "MySSP",
+      "type": "set-variables",
+      "transitions": [
+        {
+          "next": "Redirecting",
+          "event": "next"
+        }
+      ],
+      "properties": {
+        "variables": [
+          {
+            "value": "+18444519700",
+            "key": "Number"
+          },
+          {
+            "value": "SFU My Student Support Program",
+            "key": "Name"
+          }
+        ],
+        "offset": {
+          "x": 600,
+          "y": 3860
+        }
+      }
+    },
+    {
+      "name": "SFUQuestion2",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "YN9",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "timeout"
+        },
+        {
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 600,
+          "y": 3380
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "body": "Would you like to receive in-person services?",
+        "timeout": "3600"
+      }
+    },
+    {
+      "name": "SFUInternationalSupport",
+      "type": "set-variables",
+      "transitions": [
+        {
+          "event": "next"
+        }
+      ],
+      "properties": {
+        "variables": [
+          {
+            "value": "+17787824615",
+            "key": "Number"
+          },
+          {
+            "value": "SFU International Student Support",
+            "key": "Name"
+          }
+        ],
+        "offset": {
+          "x": 950,
+          "y": 3250
+        }
+      }
+    },
+    {
+      "name": "MentalHealthNurse",
+      "type": "set-variables",
+      "transitions": [
+        {
+          "next": "Redirecting",
+          "event": "next"
+        }
+      ],
+      "properties": {
+        "variables": [
+          {
+            "value": "+17787824615",
+            "key": "Number"
+          },
+          {
+            "value": "SFU Mental Health Nurse",
+            "key": "Name"
+          }
+        ],
+        "offset": {
+          "x": 1030,
+          "y": 3660
+        }
+      }
+    },
+    {
+      "name": "YN9",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "SFUQuestion2",
+          "event": "noMatch"
+        },
+        {
+          "next": "MySSP",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "No",
+              "arguments": [
+                "{{widgets.SFUQuestion2.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "No, no, N, NO, n"
+            }
+          ]
+        },
+        {
+          "next": "MentalHealthNurse",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Yes",
+              "arguments": [
+                "{{widgets.SFUQuestion2.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Yes, yes, y, YES, Y"
+            }
+          ]
+        },
+        {
+          "next": "Intro",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Restart",
+              "arguments": [
+                "{{widgets.SFUQuestion2.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Restart, RESTART, restart"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.SFUQuestion2.inbound.Body}}",
+        "offset": {
+          "x": 610,
+          "y": 3620
+        }
+      }
+    },
+    {
+      "name": "Foundry",
+      "type": "set-variables",
+      "transitions": [
+        {
+          "next": "Redirecting",
+          "event": "next"
+        }
+      ],
+      "properties": {
+        "variables": [
+          {
+            "value": "+18333086379",
+            "key": "Number"
+          },
+          {
+            "value": "SFU International Student Support",
+            "key": "Foundry"
+          }
+        ],
+        "offset": {
+          "x": 1820,
+          "y": 3900
+        }
+      }
+    },
+    {
+      "name": "Here2Talk",
+      "type": "set-variables",
+      "transitions": [
+        {
+          "next": "Redirecting",
+          "event": "next"
+        }
+      ],
+      "properties": {
+        "variables": [
+          {
+            "value": "+18778573397",
+            "key": "Number"
+          },
+          {
+            "value": "Here2Talk",
+            "key": "Name"
+          }
+        ],
+        "offset": {
+          "x": 1380,
+          "y": 3880
+        }
+      }
+    },
+    {
+      "name": "OtherQuestion2",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "YN10",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "timeout"
+        },
+        {
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 1530,
+          "y": 3370
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "body": "Are you looking for local or community services?",
+        "timeout": "3600"
+      }
+    },
+    {
+      "name": "YN10",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "OtherQuestion2",
+          "event": "noMatch"
+        },
+        {
+          "next": "Here2Talk",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "No",
+              "arguments": [
+                "{{widgets.OtherQuestion2.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "No, no, N, NO, n"
+            }
+          ]
+        },
+        {
+          "next": "Foundry",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Yes",
+              "arguments": [
+                "{{widgets.OtherQuestion2.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Yes, yes, y, YES, Y"
+            }
+          ]
+        },
+        {
+          "next": "Intro",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "Restart",
+              "arguments": [
+                "{{widgets.OtherQuestion2.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Restart, RESTART, restart"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.OtherQuestion2.inbound.Body}}",
+        "offset": {
+          "x": 1540,
+          "y": 3610
+        }
+      }
+    },
+    {
+      "name": "Redirecting",
+      "type": "send-message",
+      "transitions": [
+        {
+          "next": "call_user_1",
+          "event": "sent"
+        },
+        {
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -490,
+          "y": 370
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "body": "Redirecting you to {{flow.variables.Name}}"
+      }
+    },
+    {
+      "name": "call_user_1",
+      "type": "make-outgoing-call-v2",
+      "transitions": [
+        {
+          "next": "gather_1",
+          "event": "answered"
+        },
+        {
+          "event": "busy"
+        },
+        {
+          "event": "noAnswer"
+        },
+        {
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "machine_detection_speech_threshold": "2400",
+        "detect_answering_machine": false,
+        "send_digits": "",
+        "sip_auth_username": "",
+        "offset": {
+          "x": -490,
+          "y": 570
+        },
+        "recording_status_callback": "",
+        "sip_auth_password": "",
+        "recording_channels": "mono",
+        "timeout": 60,
+        "machine_detection": "Enable",
+        "trim": "true",
+        "record": false,
+        "machine_detection_speech_end_threshold": "1200",
+        "machine_detection_timeout": "30",
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "machine_detection_silence_timeout": "5000"
+      }
+    },
+    {
+      "name": "gather_1",
+      "type": "gather-input-on-call",
+      "transitions": [
+        {
+          "next": "split_1",
+          "event": "keypress"
+        },
+        {
+          "event": "speech"
+        },
+        {
+          "event": "timeout"
+        }
+      ],
+      "properties": {
+        "speech_timeout": "auto",
+        "offset": {
+          "x": -480,
+          "y": 790
+        },
+        "loop": 1,
+        "finish_on_key": "#",
+        "say": "We are redirecting you to {{flow.variables.Name}}. Would you like to proceed? Press 1 to continue, any other key to cancel.",
+        "language": "default",
+        "stop_gather": true,
+        "gather_language": "en",
+        "profanity_filter": "true",
+        "timeout": 5
+      }
+    },
+    {
+      "name": "connect_call_1",
+      "type": "connect-call-to",
+      "transitions": [
+        {
+          "event": "callCompleted"
+        },
+        {
+          "event": "hangup"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -310,
+          "y": 1220
+        },
+        "caller_id": "{{contact.channel.address}}",
+        "noun": "number",
+        "to": "+16139818068",
+        "timeout": 30
+      }
+    },
+    {
+      "name": "split_1",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "Intro",
+          "event": "noMatch"
+        },
+        {
+          "next": "connect_call_1",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "If value equal_to 1",
+              "arguments": [
+                "{{widgets.gather_1.Digits}}"
+              ],
+              "type": "equal_to",
+              "value": "1"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.gather_1.Digits}}",
+        "offset": {
+          "x": -480,
+          "y": 1000
+        }
+      }
+    }
+  ],
+  "initial_state": "Trigger",
+  "flags": {
+    "allow_concurrent_calls": true
+  }
+}

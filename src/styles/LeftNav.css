@@ -2,16 +2,16 @@
   width: 130px;
   position: fixed;
   z-index: 1;
-  top: 45%;
+  top: 25%;
   left: 5px;
   overflow-x: hidden;
   padding: 8px 0;
-  text-align: start;
 }
 
 .sidenav .link {
-  margin: 20px;
-  padding: 6px 8px 6px 16px;
+  margin: 25px;
+  margin-bottom:40px;
+  padding: 16px;
   text-decoration: none;
   font-size: 25px;
   color: #000000;
@@ -20,11 +20,13 @@
   justify-content: center;
 }
 
+
 .active {
+  padding-left: 50px;
   background: #ffffff;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 45px ;
+  height: 45px;
   color: black !important;
   box-shadow: #c2efba 0px 5px 15px;
 }
@@ -38,7 +40,7 @@
 }
 
 img.icon {
-  width: 40px;
+  width: 30px;
   height: auto;
   object-fit: cover;
 }

@@ -5,6 +5,7 @@ import ResourceOverall from './homepage/ResourceOverall';
 import Resources from './homepage/Resources';
 import Map from './homepage/Map'
 import "../styles/Home.css";
+import QRCode from './homepage/QRCode'
 
 function Home() {
   return (
@@ -21,6 +22,10 @@ function Home() {
       </section>
       <section className="" id="map">
         <Map />
+      </section>
+      <section className="" id="faq"></section>
+      <section className="" id="qrcode">
+        <QRCode/>
       </section>
     </div>
   );

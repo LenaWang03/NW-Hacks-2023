@@ -1,7 +1,8 @@
 .resources {
   width: 1080px;
-  /* margin: 50px auto; */
+  margin: 0 auto;
   display: flex;
+  margin-top: -300px;
   flex-direction: column;
   justify-content: center;
 }
@@ -14,13 +15,13 @@
   border: 4px solid #c2efba;
   text-align: left;
   padding: 2em;
-
   background: linear-gradient(
     156.7deg,
     rgba(207, 239, 186, 0.9) -33.84%,
     rgba(255, 255, 255, 0.9) 45.04%
   );
 }
+
 
 .resource-header {
   font-weight: 800;
@@ -57,4 +58,40 @@
 
   color: linear-gradient(125.35deg, #bed0ff 24.24%, #c2efba 59.9%);
   margin-right: auto;
+}
+
+.resource-section {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+.resource-left {
+  width: 600px;
+  display: absolute;
+  right: 0;
+  margin-right: -826px;
+}
+
+.resource-right {
+  width: 600px;
+  display: absolute;
+  left: 0;
+  margin-right: 826px;
+  padding-bottom: 100px;
+}
+
+.overall {
+  padding-top: 200px;
+  width: 100%;
+  margin: auto;
+}
+
+.slider {
+  display: relative;
+  align-items: center;
+}
+
+.lineOne {
+  padding: 100px;
+  width: 80%;
 }

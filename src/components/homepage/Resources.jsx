@@ -56,28 +56,18 @@ function Resources() {
   };
    
   return (
-    <div className="resources">
-      <h2 className="green resources-header">General Resources</h2>
-      <Carousel
-        responsive={responsive}
-      >
-        <Resource />
-        <Resource />
-        <Resource />
-        <Resource />
-        <Resource />
-      </Carousel>
     <div className="overall">
       <div className="resources">
-        <h2 className="green resources-header">General Resources</h2>
-        <Slider {...settings}>
+          <h2 className="green resources-header">General Resources</h2>
+        <Carousel
+          responsive={responsive}
+        >
           <Resource />
           <Resource />
           <Resource />
           <Resource />
           <Resource />
-          <Resource />
-        </Slider>
+        </Carousel>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import '../../styles/QRCode.css';
+import qr from '../../assets/qr.png'
 
 function QRCode() {
   function openForm() {
@@ -22,7 +23,7 @@ function QRCode() {
           <p className="popup-text">
             Chat with Miu to find the right phoneline for you.
           </p>
-          <img class="qrcode" src="src/assets/qr.png" />
+          <img class="qrcode" src={qr} />
           <img
             type="button"
             id="icon"

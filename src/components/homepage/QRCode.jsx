@@ -1,4 +1,7 @@
 import '../../styles/QRCode.css';
+import qr from '../../assets/qr.png'
+import chatBlack from '../../assets/Chat_black.png'
+import chatWhite from '../../assets/Chat_white.png'
 
 function QRCode() {
   function openForm() {
@@ -15,20 +18,20 @@ function QRCode() {
         className="open-button"
         id="icon"
         onClick={openForm}
-        src="src/assets/Chat_black.png"
+        src={chatBlack}
       ></img>
       <div className="form-popup" id="myForm">
         <form action="/action_page.php" className="form-container">
           <p className="popup-text">
             Chat with Miu to find the right phoneline for you.
           </p>
-          <img class="qrcode" src="src/assets/qr.png" />
+          <img class="qrcode" src={qr} />
           <img
             type="button"
             id="icon"
             className="btn cancel"
             onClick={closeForm}
-            src="src/assets/Chat_white.png"
+            src={chatWhite}
           ></img>
         </form>
       </div>

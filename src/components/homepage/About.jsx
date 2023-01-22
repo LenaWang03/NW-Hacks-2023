@@ -1,4 +1,4 @@
-import '../styles/About.css';
+import '../../styles/About.css'
 import Features from './about/Features';
 import Miu from './about/Miu';
 

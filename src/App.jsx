@@ -1,22 +1,20 @@
+import { useState } from 'react';
 import './App.css';
 import Home from './components/Home';
-import About from './components/About';
-import LeftNav from './components/homepage/LeftNav';
+import Meditation from './components/Meditation'
 import { Link } from 'react-scroll';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 function App() {
 
   return (
-    <div className="App">
-      <LeftNav />
-      <section className="" id="home">
-        <Home />
-      </section>
-      <section className="" id="about">
-        <About/>
-      </section>
-      <section className="" id="faq"></section>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/meditation" element={<Meditation />}/>
+        {/* <Route path="/map" element={<Map />}></Route> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 

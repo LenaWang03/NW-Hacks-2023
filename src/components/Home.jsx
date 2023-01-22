@@ -1,14 +1,19 @@
-import Logo from './homepage/Logo';
-import Headline from './homepage/Headline';
-import Button from './homepage/Button';
+import LeftNav from './homepage/LeftNav'
+import Landing from './homepage/Landing'
+import About from './homepage/About'
 
 function Home() {
 
   return (
-    <div>
-      <Logo />
-      <Headline />
-      <Button />
+    <div className="App">
+      <LeftNav />
+      <section className="" id="home">
+        <Landing />
+      </section>
+      <section className="" id="about">
+        <About/>
+      </section>
+      <section className="" id="faq"></section>
     </div>
   );
 }

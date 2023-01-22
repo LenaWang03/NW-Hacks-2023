@@ -2,6 +2,7 @@ import LeftNav from './homepage/LeftNav';
 import Landing from './homepage/Landing';
 import About from './homepage/About';
 import Resources from './homepage/Resources';
+import Map from './homepage/Map'
 import "../styles/Home.css";
 
 function Home() {
@@ -16,6 +17,9 @@ function Home() {
       </section>
       <section className="" id="resources">
         <Resources />
+      </section>
+      <section className="" id="map">
+        <Map />
       </section>
     </div>
   );

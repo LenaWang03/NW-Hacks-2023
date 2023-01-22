@@ -2,7 +2,7 @@ function Headline() {
   return (
     <div className="">
       <h2 className="homepage-headline">
-        a more <span className="headline-green">mindful</span> you
+        a more <span className="green">mindful</span> you
       </h2>
       <p className="homepage-summary">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis nisi

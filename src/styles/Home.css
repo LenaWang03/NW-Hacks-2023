@@ -33,14 +33,6 @@
   margin-bottom: 20px;
 }
 
-.headline-green {
-  background: linear-gradient(125.35deg, #c2efba 24.24%, #bed0ff 59.9%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-}
-
 .homepage-summary {
   width: 900px;
   margin-bottom: 56px;

@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg';
 import './App.css';
 import LeftNav from './components/LeftNav';
 import Home from './components/Home';
+import About from './components/About';
 import { Link } from 'react-scroll';
 
 function App() {
@@ -14,7 +15,9 @@ function App() {
       <section className="" id="home">
         <Home />
       </section>
-      <section className="" id="about"></section>
+      <section className="" id="about">
+        <About/>
+      </section>
       <section className="" id="faq"></section>
     </div>
   );

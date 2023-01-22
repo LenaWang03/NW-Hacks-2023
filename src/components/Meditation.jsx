@@ -3,7 +3,7 @@ import Timer from './meditation/Timer';
 import meditatingMiu from '../assets/meditating-miu.svg';
 import standingMiu from '../assets/standing-miu.svg';
 import WaterWave from 'react-water-wave';
-import image from '../assets/jackson-hendry-kKpTHqM2K-c-unsplash.jpg';
+import image from '../assets/yuriy-kovalev-nN1HSDtKdlw-unsplash.jpg';
 import '../styles/Meditation.css'
 
 export default function Meditation() {

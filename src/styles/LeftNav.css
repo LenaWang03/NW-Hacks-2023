@@ -3,7 +3,7 @@
   position: fixed;
   z-index: 1;
   top: 45%;
-  left: 10px;
+  left: 5px;
   overflow-x: hidden;
   padding: 8px 0;
   text-align: start;
@@ -15,13 +15,16 @@
   text-decoration: none;
   font-size: 25px;
   color: #000000;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .active {
   background: #ffffff;
-  border-radius: 20px;
-  width: 80px;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
   color: black !important;
   box-shadow: #c2efba 0px 5px 15px;
 }
@@ -34,6 +37,11 @@
   padding: 0px 10px;
 }
 
+img.icon {
+  width: 40px;
+  height: auto;
+  object-fit: cover;
+}
 @media screen and (max-height: 450px) {
   .sidenav {
     padding-top: 15px;

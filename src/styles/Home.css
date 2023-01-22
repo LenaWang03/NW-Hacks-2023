@@ -13,7 +13,6 @@
   height: 136px;
 }
 
-
 .logo-text {
   position: relative;
   margin-left: 13px;
@@ -34,7 +33,7 @@
 
 .img-l {
   width: 400px;
-  padding-top: 150px
+  padding-top: 150px;
 }
 
 .homepage-headline {
@@ -47,7 +46,6 @@
   text-align: start;
   line-height: 1.2em;
   width: 80%;
-
 }
 
 .homepage-summary {
@@ -90,21 +88,6 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 .card {
   padding: 2em;
 }
@@ -114,7 +97,6 @@
 }
 
 .green {
-
   background: linear-gradient(125.35deg, #c2efba 24.24%, #bed0ff 59.9%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -140,4 +122,41 @@ section {
 
 .home {
   margin-bottom: -100px;
+}
+
+.clouds {
+  width: 100%;
+}
+
+@keyframes animateCloud {
+  0% {
+    margin-left: -500px;
+  }
+  100% {
+    margin-left: 100%;
+  }
+}
+
+.cloud1 {
+  position: absolute;
+  -webkit-animation: animateCloud 35s linear infinite;
+  -moz-animation: animateCloud 35s linear infinite;
+  animation: animateCloud 35s linear infinite;
+  margin-top: 100px;
+}
+
+.cloud2 {
+  position: absolute;
+  -webkit-animation: animateCloud 20s linear infinite;
+  -moz-animation: animateCloud 20s linear infinite;
+  animation: animateCloud 20s linear infinite;
+  margin-top: 225px;
+}
+
+.cloud3 {
+  position: absolute;
+  -webkit-animation: animateCloud 45s linear infinite;
+  -moz-animation: animateCloud 45s linear infinite;
+  animation: animateCloud 45s linear infinite;
+  margin-top: 312px;
 }

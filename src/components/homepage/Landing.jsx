@@ -11,9 +11,9 @@ function Home() {
   return (
     <div className="home">
       <div className="clouds">
-        <img src={Cloud1} alt="Cloud 1" />
-        <img src={Cloud2} alt="Cloud 2" />
-        <img src={Cloud3} alt="Cloud 3" />
+        <img src={Cloud1} alt="Cloud 1" className='cloud1'/>
+        <img src={Cloud2} alt="Cloud 2" className='cloud2'/>
+        <img src={Cloud3} alt="Cloud 3" className='cloud3'/>
       </div>
       <div className="landing">
         <div className="landing-info">

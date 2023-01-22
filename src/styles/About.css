@@ -1,5 +1,11 @@
 .about {
   background: #c2efba;
+  width: 100vw;
+}
+
+.about-container {
+  width: 1080px;
+  margin: 0 auto;
 }
 
 .features {
@@ -38,6 +44,7 @@
 }
 
 .feature-row {
+  margin-top: 80px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

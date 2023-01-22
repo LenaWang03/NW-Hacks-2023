@@ -3,20 +3,21 @@ import reactLogo from './assets/react.svg';
 import './App.css';
 import LeftNav from './components/LeftNav';
 import Home from './components/Home';
+import Focus from './components/Focus'
 import { Link } from 'react-scroll';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="App">
-      <LeftNav />
-      <section className="" id="home">
-        <Home />
-      </section>
-      <section className="" id="about"></section>
-      <section className="" id="faq"></section>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/focus" element={<Focus />}/>
+        <Route path="/map" element={<Map />}></Route>
+      z</Routes>
+    </BrowserRouter>
   );
 }
 

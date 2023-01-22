@@ -62,19 +62,21 @@ const MyMarkers = ({ data }) => {
 const position = [49.268688, -123.252112];
 const Map = () => {
   return (
+    
     <MapContainer
       className="markercluster-map"
       center={position}
       zoom={15}
       maxZoom={18}
-      style={{ width: "75vw", height: "50em", border: '1px solid black', padding: '3em', 
+      style={{ width: "75vw", height: "50em", border: '1px solid black', padding: '3em',
     margin: "5em 0 5em"}}
     >
+      
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
-
+      
       {ubcPoints.map((point) => {
         return (
           <Marker position={point.location}>

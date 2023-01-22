@@ -1,6 +1,14 @@
+#root {
+  margin: 0;
+  padding: 0;
+}
+
+.meditation {
+  margin: auto;
+}
+
 .green-bg {
   background-color: linear-gradient(125.35deg, #c2efba 24.24%, #bed0ff 59.9%);
-  /* color: white; */
 }
 
 .btn {

@@ -1,12 +1,15 @@
 .resources {
   width: 1080px;
-  margin: 10px auto;
+  /* margin: 50px auto; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .resource {
   box-sizing: border-box;
   width: 262.18px;
-  height:  328.42px;
+  height: 328.42px;
   border-radius: 27.5983px;
   border: 4px solid #c2efba;
   text-align: left;
@@ -43,4 +46,14 @@
   margin-left: auto;
   width: 45.08px;
   height: 45.08px;
+}
+
+.resources-header {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 61px;
+
+  color: linear-gradient(125.35deg, #bed0ff 24.24%, #c2efba 59.9%);
+  margin-right: auto;
 }

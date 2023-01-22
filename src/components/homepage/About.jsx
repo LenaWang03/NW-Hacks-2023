@@ -5,7 +5,7 @@ import Miu from './about/Miu';
 function About() {
   return (
     <div className="about">
-      <div className='about-container'>
+      <div className="about-container">
         <div className="feature-row">
           <Features />
           <Features />

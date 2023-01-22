@@ -2,9 +2,9 @@ import LeftNav from './homepage/LeftNav';
 import Landing from './homepage/Landing';
 import About from './homepage/About';
 import ResourceOverall from './homepage/ResourceOverall';
-import Resources from './homepage/Resources';
 import Map from './homepage/Map'
 import "../styles/Home.css";
+import QRCode from './homepage/QRCode'
 
 function Home() {
   return (
@@ -22,6 +22,10 @@ function Home() {
       <section className="" id="map">
         <h2 className="center green map-header">Interactive Location Map</h2>
         <Map />
+      </section>
+      <section className="" id="faq"></section>
+      <section className="" id="qrcode">
+        <QRCode/>
       </section>
     </div>
   );

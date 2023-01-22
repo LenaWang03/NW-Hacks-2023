@@ -1,4 +1,13 @@
 
+.container {
+  margin: -150px;
+  padding: -2em;
+}
+
+.meditation {
+  margin: auto;
+}
+
 body {
   background-color: linear-gradient(125.35deg, #c2efba 24.24%, #bed0ff 59.9%);
 }

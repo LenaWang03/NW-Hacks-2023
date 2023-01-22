@@ -20,6 +20,7 @@ function Home() {
         <ResourceOverall />
       </section>
       <section className="" id="map">
+        <h2 className="center green map-header">Interactive Location Map</h2>
         <Map />
       </section>
     </div>

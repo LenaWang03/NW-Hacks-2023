@@ -32,13 +32,9 @@ function Timer({ expiryTimestamp, isMeditating, setMeditating }) {
     
     <div style={{textAlign: 'center'}}>
       <h1 style={{color: "linear-gradient(125.35deg, #c2efba 24.24%, #bed0ff 59.9%)"}}>Meditate with Miu </h1>
-      {/* <p>Timer Demo</p> */}
       <div style={{fontSize: '100px'}}>
         <span>{to2Digit(minutes)}</span>:<span>{to2Digit(seconds)}</span>
       </div>
-      {/* <p>{isRunning ? 'Running' : 'Not running'}</p> */}
-      {/* <button onClick={start}>Start</button>
-      <button onClick={pause}>Pause</button> */}
       <br/>
       <br/>
       <button className={`${isMeditating ? "hidden" : ""} btn`} onClick={() => {

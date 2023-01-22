@@ -18,6 +18,7 @@
     "react-scroll": "^1.8.9",
     "react-slick": "^0.29.0",
     "react-timer-hook": "^3.0.5",
+    "react-water-wave": "^2.0.1",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {

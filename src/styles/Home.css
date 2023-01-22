@@ -13,6 +13,7 @@
   height: 136px;
 }
 
+
 .logo-text {
   position: relative;
   margin-left: 13px;
@@ -23,19 +24,34 @@
   color: #000000;
 }
 
+.landing-info {
+  width: 50%;
+}
+
+.landing-img {
+  width: 400px;
+}
+
+.img-l {
+  width: 400px;
+  padding-top: 150px
+}
+
 .homepage-headline {
   font-style: normal;
   font-weight: 800;
-  font-size: 50px;
-  line-height: 61px;
-  text-align: center;
+  font-size: 80px;
+  text-align: left;
   color: #000000;
-  margin-bottom: 20px;
+  line-height: 1.2em;
+  width: 80%;
 }
 
 .homepage-summary {
   width: 900px;
   margin-bottom: 56px;
+  text-align: left;
+  max-width: 80%;
 }
 
 .homepage-button {
@@ -95,11 +111,13 @@
 }
 
 .green {
+
   background: linear-gradient(125.35deg, #c2efba 24.24%, #bed0ff 59.9%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+  font-family: Inter, sans-serif;
 }
 
 section {
@@ -107,5 +125,17 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+}
+
+.landing {
+  padding: 200px;
+  padding-top: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
+}
+
+.home {
+  margin-bottom: -100px;
 }

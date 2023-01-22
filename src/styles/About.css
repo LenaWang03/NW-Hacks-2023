@@ -1,4 +1,5 @@
 .about {
+  padding-top: 200px;
   background: #c2efba;
   width: 100vw;
 }
@@ -13,10 +14,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  justify-content: center;
   width: 314px;
   height: 345px;
-
   background: linear-gradient(
     156.7deg,
     rgba(207, 239, 186, 0.9) -33.84%,
@@ -28,7 +28,6 @@
 }
 
 .features-header {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 800;
   font-size: 50px;
@@ -55,8 +54,6 @@
 .meet-miu {
   width: 498px;
   height: 130px;
-
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 800;
   font-size: 100px;

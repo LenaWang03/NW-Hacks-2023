@@ -9,7 +9,8 @@
   text-align: start;
 }
 
-.sidenav .link{
+.sidenav .link {
+  margin: 20px;
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
@@ -18,15 +19,18 @@
 }
 
 .active {
-  background: #000000;
+  background: #ffffff;
   border-radius: 20px;
-  color: #BED0FF!important;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px ;
+  width: 80px;
+  color: black !important;
+  box-shadow: #c2efba 0px 5px 15px;
 }
 
 .main {
-  margin-left: 140px; /* Same width as the sidebar + left position in px */
-  font-size: 28px; /* Increased text to enable scrolling */
+  margin-left: 140px;
+  /* Same width as the sidebar + left position in px */
+  font-size: 28px;
+  /* Increased text to enable scrolling */
   padding: 0px 10px;
 }
 
@@ -34,6 +38,7 @@
   .sidenav {
     padding-top: 15px;
   }
+
   .sidenav .link {
     font-size: 18px;
   }

@@ -1,6 +1,6 @@
 function Headline() {
   return (
-    <div className="">
+    <div className="homepage-landing">
       <h2 className="homepage-headline">
         a more <span className="green">mindful</span> you
       </h2>

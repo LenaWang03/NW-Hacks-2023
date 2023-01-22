@@ -1,0 +1,39 @@
+.homepage-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logo-placeholder {
+  left: 107px;
+  top: 53px;
+  width: 107px;
+  height: 104px;
+  border: 1px solid #000000;
+}
+
+.logo-text {
+  margin-left: 33px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 205.02%;
+  color: #000000;
+}
+
+.homepage-headline {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 61px;
+  text-align: center;
+  color: #000000;
+}
+
+.headline-green {
+  background: linear-gradient(125.35deg, #c2efba 24.24%, #bed0ff 59.9%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}

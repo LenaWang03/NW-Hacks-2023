@@ -4,21 +4,22 @@
   z-index: 1;
   top: 45%;
   left: 10px;
-  /* background: #eee; */
   overflow-x: hidden;
   padding: 8px 0;
+  text-align: start;
 }
 
 .sidenav .link{
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
-  color: #2196f3;
+  color: #000000;
   display: block;
 }
 
 .active {
-  color: #064579 !important;
+  color: #BED0FF!important;
+  text-shadow: 1px 1px 1px #000;
 }
 
 .main {

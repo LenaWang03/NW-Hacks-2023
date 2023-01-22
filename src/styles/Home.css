@@ -31,11 +31,13 @@
   text-align: center;
   color: #000000;
   margin-bottom: 20px;
+  text-align: start;
 }
 
 .homepage-summary {
   width: 900px;
   margin-bottom: 56px;
+  text-align: start;
 }
 
 .homepage-button {

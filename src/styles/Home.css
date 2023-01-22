@@ -69,13 +69,13 @@
   color: #ffffff;
 }
 
-#root {
+/* #root {
   max-width: 1280px;
-  margin: 0 auto;
+  margin: auto;
   padding: 2rem;
   text-align: left;
   overflow: hidden;
-}
+} */
 
 .logo {
   height: 6em;

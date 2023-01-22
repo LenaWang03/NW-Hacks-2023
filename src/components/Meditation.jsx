@@ -12,7 +12,7 @@ export default function Meditation() {
   const [isMeditating, setMeditating] = useState(false);
 
   return (
-    <div className="container">
+    <div>
       <WaterWave
         imageUrl={image}
         style={{

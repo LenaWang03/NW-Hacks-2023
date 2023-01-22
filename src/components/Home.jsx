@@ -1,10 +1,11 @@
-import LeftNav from './homepage/LeftNav';
-import Landing from './homepage/Landing';
-import About from './homepage/About';
-import ResourceOverall from './homepage/ResourceOverall';
-import Map from './homepage/Map'
+import LeftNav from "./homepage/LeftNav";
+import Landing from "./homepage/Landing";
+import About from "./homepage/About";
+import ResourceOverall from "./homepage/ResourceOverall";
+import Map from "./homepage/Map";
 import "../styles/Home.css";
-import QRCode from './homepage/QRCode'
+import QRCode from "./homepage/QRCode";
+import footer from "../assets/footer.png";
 
 function Home() {
   return (
@@ -25,8 +26,19 @@ function Home() {
       </section>
       <section className="" id="faq"></section>
       <section className="" id="qrcode">
-        <QRCode/>
+        <QRCode />
       </section>
+      <div className="footer-container">
+        <p>
+          The information provided on this website is created and compiled by
+          students for educational and informational purposes only. It is not
+          intended to be a substitute for professional medical advice or
+          treatment. The creators of this website are not licensed professionals
+          and do not endorse or recommend any specific treatment or other
+          information that may be mentioned on the website.
+        </p>
+        <img src={footer} alt="" className="footer" />
+      </div>
     </div>
   );
 }

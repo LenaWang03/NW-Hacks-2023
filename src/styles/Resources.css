@@ -13,7 +13,7 @@
   border-radius: 27.5983px;
   border: 4px solid #c2efba;
   text-align: left;
-  padding: 1em;
+  padding: 2em;
 
   background: linear-gradient(
     156.7deg,
@@ -28,7 +28,7 @@
   line-height: 45px;
   display: flex;
   align-items: center;
-
+  margin-top: 0.20em;
   color: #000000;
   margin-bottom: 17.35px;
 }
@@ -43,6 +43,7 @@
 }
 
 .resource-link {
+  display: flex;
   margin-left: auto;
   width: 45.08px;
   height: 45.08px;
@@ -56,9 +57,4 @@
 
   color: linear-gradient(125.35deg, #bed0ff 24.24%, #c2efba 59.9%);
   margin-right: auto;
-}
-
-.resource-arrow {
-  width: 25px;
-  height: 25px;
 }

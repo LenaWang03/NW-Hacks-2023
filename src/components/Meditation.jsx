@@ -23,6 +23,11 @@ export default function Meditation() {
           justifyContent: 'center',
         }}
       >
+       <a href="/" style={{position: 'absolute', left: '5em', top: '5em', alignSelf: 'flex-start'}}>
+        <button className="link-btn">
+          Home
+        </button>
+      </a>
         {() => (
           <div className="meditation">
             <img

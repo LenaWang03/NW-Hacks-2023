@@ -17,6 +17,13 @@ function Timer({ expiryTimestamp, isMeditating, setMeditating }) {
     restart,
   } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called') });
 
+  function to2Digit(num) {
+    let str = num.toString();
+    if (str.length == 1) {
+      return "0" + str;
+    }
+    return str;
+  }
   // pause();
   useEffect(() => {
     pause()
@@ -26,7 +33,7 @@ function Timer({ expiryTimestamp, isMeditating, setMeditating }) {
     <div style={{textAlign: 'center'}}>
       <h1 style={{color: "linear-gradient(125.35deg, #c2efba 24.24%, #bed0ff 59.9%)"}}>Meditate with Miu </h1>
       <div style={{fontSize: '100px'}}>
-        <span>{minutes}</span>:<span>{seconds}</span>
+        <span>{to2Digit(minutes)}</span>:<span>{to2Digit(seconds)}</span>
       </div>
       <br/>
       <br/>
@@ -38,16 +45,16 @@ function Timer({ expiryTimestamp, isMeditating, setMeditating }) {
       }}>Start</button>
       <button className={`${!isMeditating ? "hidden" : ""} btn`} onClick={() => {
         // Restarts to 5 minutes timer
-        if (audio != null) {
-          audio.pause();
-          audio.currentTime = 0;
-          console.log("HIII");
-        }
-        const time = new Date();
-        time.setSeconds(time.getSeconds() + 600);
-        restart(time);
-        pause();
-        setMeditating(false);
+        window.location.reload(); // used this because audio won't pause
+        // if (audio != null) {
+        //   audio.pause();
+        //   audio.currentTime = 0;
+        // }
+        // const time = new Date();
+        // time.setSeconds(time.getSeconds() + 600);
+        // restart(time);
+        // pause();
+        // setMeditating(false);
       }}>Reset</button>
     </div>
   );

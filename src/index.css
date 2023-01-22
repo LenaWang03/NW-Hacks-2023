@@ -1,18 +1,20 @@
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
+  font-family: Inter, sans-serif;
+  font-style: normal;
   font-weight: 400;
+  font-size: 14px;
+  line-height: 205.02%;
 
   color-scheme: light dark;
-  color: gray;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  color: #000000;
 }
 
 a {
@@ -36,6 +38,7 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
 
 button {
   border-radius: 8px;
@@ -69,10 +72,4 @@ button:focus-visible {
   }
 } */
 
-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
+

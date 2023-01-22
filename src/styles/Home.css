@@ -2,18 +2,20 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 96px;
+  top: 27px;
 }
 
-.logo-placeholder {
-  left: 107px;
-  top: 53px;
-  width: 107px;
-  height: 104px;
-  border: 1px solid #000000;
+.logo-leaf {
+  width: 138px;
+  height: 136px;
 }
 
 .logo-text {
-  margin-left: 33px;
+  position: relative;
+  margin-left: 13px;
   font-style: normal;
   font-weight: 600;
   font-size: 40px;
@@ -21,19 +23,140 @@
   color: #000000;
 }
 
+.landing-info {
+  width: 50%;
+}
+
+.landing-img {
+  width: 400px;
+}
+
+.img-l {
+  width: 400px;
+  padding-top: 150px;
+}
+
 .homepage-headline {
   font-style: normal;
   font-weight: 800;
-  font-size: 50px;
-  line-height: 61px;
-  text-align: center;
+  font-size: 80px;
+  text-align: left;
   color: #000000;
+  margin-bottom: 20px;
+  text-align: start;
+  line-height: 1.2em;
+  width: 80%;
 }
 
-.headline-green {
+.homepage-summary {
+  width: 900px;
+  margin-bottom: 56px;
+  text-align: left;
+  max-width: 80%;
+}
+
+.homepage-button {
+  width: 267px;
+  height: 72px;
+  background: #c2efba;
+  box-shadow: 0px 10px 20px rgba(190, 208, 255, 0.6);
+  border-radius: 36px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 36px;
+  text-align: center;
+  color: #ffffff;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: left;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.green {
   background: linear-gradient(125.35deg, #c2efba 24.24%, #bed0ff 59.9%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+  font-family: Inter, sans-serif;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing {
+  padding-top: 200px;
+  padding-bottom: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.home {
+  margin-bottom: -100px;
+}
+
+.clouds {
+  width: 100%;
+}
+
+@keyframes animateCloud {
+  0% {
+    margin-left: -500px;
+  }
+  100% {
+    margin-left: 100%;
+  }
+}
+
+.cloud1 {
+  position: absolute;
+  -webkit-animation: animateCloud 35s linear infinite;
+  -moz-animation: animateCloud 35s linear infinite;
+  animation: animateCloud 35s linear infinite;
+  margin-top: 100px;
+}
+
+.cloud2 {
+  position: absolute;
+  -webkit-animation: animateCloud 20s linear infinite;
+  -moz-animation: animateCloud 20s linear infinite;
+  animation: animateCloud 20s linear infinite;
+  margin-top: 225px;
+}
+
+.cloud3 {
+  position: absolute;
+  -webkit-animation: animateCloud 45s linear infinite;
+  -moz-animation: animateCloud 45s linear infinite;
+  animation: animateCloud 45s linear infinite;
+  margin-top: 312px;
 }

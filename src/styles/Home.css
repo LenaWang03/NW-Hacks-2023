@@ -128,12 +128,11 @@ section {
 }
 
 .landing {
-  padding: 200px;
   padding-top: 200px;
+  padding-bottom: 200px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  
 }
 
 .home {

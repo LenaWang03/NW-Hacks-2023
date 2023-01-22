@@ -14,17 +14,6 @@ function About() {
           <Features feature={"Service Map"} text={"Find mental health clinics and services near you with our Mental health service Map"}/>
         </div>
         <Miu />
-        <Carousel>
-          <div>
-            <Features />
-          </div>
-          <div>
-            <Features />
-          </div>
-          <div>
-            <Features />
-          </div>
-        </Carousel>
       </div>
     </div>
   );

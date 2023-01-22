@@ -13,8 +13,8 @@ function LeftNav() {
       <Link activeClass="active" className="link" smooth spy to="about">
         About
       </Link>
-      <Link activeClass="active" className="link" smooth spy to="faq">
-        FAQ
+      <Link activeClass="active" className="link" smooth spy to="resources">
+        Resources
       </Link>
     </nav>
   );

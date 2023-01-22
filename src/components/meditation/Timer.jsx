@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useTimer } from 'react-timer-hook';
 
-function Timer({ expiryTimestamp }) {
-  const [running, setRunning] = useState(false)
+function Timer({ expiryTimestamp, isMeditating, setMeditating }) {
+  // const [running, setRunning] = useState(false)
 
   const {
     seconds,
@@ -31,17 +31,17 @@ function Timer({ expiryTimestamp }) {
       <button onClick={pause}>Pause</button> */}
       <br/>
       <br/>
-      <button className={`${running ? "hidden" : ""}`}onClick={() => {
+      <button className={`${isMeditating ? "hidden" : ""}`}onClick={() => {
         resume();
-        setRunning(true);
+        setMeditating(true);
       }}>Start</button>
-      <button className={`${!running ? "hidden" : ""}`} onClick={() => {
+      <button className={`${!isMeditating ? "hidden" : ""}`} onClick={() => {
         // Restarts to 5 minutes timer
         const time = new Date();
         time.setSeconds(time.getSeconds() + 600);
         restart(time);
         pause();
-        setRunning(false);
+        setMeditating(false);
       }}>Reset</button>
     </div>
   );

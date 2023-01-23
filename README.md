@@ -7,8 +7,7 @@ MindfulU centralizes information on mental health services offered by UBC, SFU a
 React.js, Twilio API, Leaflet, JQuery, Figma, Adobe Illustrator, Vercel for Deployment
 
 ## QR Code
-Here is the QR Code for the twilio chat. Right now, it is not accessible from the deployment in Vercel.
-
+Here is the QR Code for the twilio chat. 
 ![](src/assets/qr.png)
 
 ## Members

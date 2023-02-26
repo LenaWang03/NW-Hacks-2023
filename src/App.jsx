@@ -1,5 +1,6 @@
 import './App.css';
 import Home from './components/Home';
+import { Link } from 'react-scroll';
 import Meditation from './components/Meditation'
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
